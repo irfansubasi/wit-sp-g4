@@ -49,6 +49,7 @@ export default function LoginForm() {
       <FormGroup>
         <Label for="maildata">Email</Label>
         <Input
+          data-cy="email"
           id="maildata"
           name="email"
           value={form.email}
@@ -61,6 +62,7 @@ export default function LoginForm() {
       <FormGroup>
         <Label for="passworddata">Password</Label>
         <Input
+          data-cy="password"
           id="passworddata"
           name="password"
           value={form.password}
@@ -72,6 +74,7 @@ export default function LoginForm() {
       </FormGroup>
       <FormGroup check>
         <Input
+          data-cy="checkbox"
           type="checkbox"
           onChange={handleChange}
           name="isChecked"
@@ -79,7 +82,7 @@ export default function LoginForm() {
         />{' '}
         <Label check>I agree</Label>
       </FormGroup>
-      <Button onClick={handleSubmit} disabled={!isFormValid}>
+      <Button data-cy="button" onClick={handleSubmit} disabled={!isFormValid}>
         Submit
       </Button>
     </Form>
