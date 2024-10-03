@@ -1,6 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import {
+  Button,
+  Form,
+  FormFeedback,
+  FormGroup,
+  Input,
+  Label,
+} from 'reactstrap';
 
 export default function LoginForm() {
   const [form, setForm] = useState({
@@ -58,6 +65,14 @@ export default function LoginForm() {
           onChange={handleChange}
           invalid={form.email !== '' && !form.emailValid}
         />
+        {form.email !== '' && !form.emailValid && (
+          <FormFeedback
+            data-error-cy="error-messages"
+            data-cy="emailValidation"
+          >
+            Please enter a valid email address.
+          </FormFeedback>
+        )}
       </FormGroup>
       <FormGroup>
         <Label for="passworddata">Password</Label>
@@ -71,6 +86,13 @@ export default function LoginForm() {
           onChange={handleChange}
           invalid={form.password !== '' && !form.passwordValid}
         />
+        <FormFeedback
+          data-error-cy="error-messages"
+          data-cy="passwordValidation"
+        >
+          The password must be at least 8 characters, contain numbers, upper and
+          lower case letters and special characters.
+        </FormFeedback>
       </FormGroup>
       <FormGroup check>
         <Input
